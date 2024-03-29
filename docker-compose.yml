@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  app:
+    build: .
+    ports:
+      - "3010:3000"
+    depends_on:
+      - mongo
+  mongo:
+    image: "mongo"
+    ports:
+      - "27019:27017" # Changed the host port to 27019
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: mongo
+      MONGO_INITDB_ROOT_PASSWORD: mongo
+    volumes:
+      - mongodb_data:/data/db
+
+volumes:
+  mongodb_data:
+
