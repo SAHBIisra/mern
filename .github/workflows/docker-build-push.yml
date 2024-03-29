@@ -15,9 +15,6 @@ jobs:
 
       - name: Build Docker image
         run: docker build -t mern:latest .
-        
-      - name: Run Docker compose
-        run: docker-compose up --build 
 
       - name: Tag Docker image
         run: docker tag mern:latest israa12/social:latest
@@ -27,3 +24,6 @@ jobs:
 
       - name: Push Docker image to Docker Hub
         run: docker push israa12/social:latest
+
+      - name: Run Docker compose
+        run: docker-compose up -d --build 
